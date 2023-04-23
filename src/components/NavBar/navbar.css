@@ -1,0 +1,15 @@
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: rgb(134, 170, 158);
+    padding: 0px 10px 0px 10px;
+}
+
+.navBar ul{
+    list-style: none;
+    display: inline-flex;
+    margin-bottom: 15px;
+    gap: 1rem;
+}
