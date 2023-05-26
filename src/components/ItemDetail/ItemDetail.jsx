@@ -10,6 +10,8 @@ function ItemDetail({products}) {
   const {cart, addItem } = useContext(cartContext)
   console.log("cart:", cart);
 
+  const [addedToCart, setAddedToCart] = useState(false);
+
   function onAddToCart(count) {
     addItem(products, count);
     console.log("Agregado");
@@ -23,13 +25,9 @@ function ItemDetail({products}) {
         <h3>{products.category}</h3>
         <p>${products.price}</p>
         <ItemCount onAddToCart={onAddToCart}/>
-
-        <Link to={`/detalle/${products.id - 1}`}>
-          <Button>Anterior</Button>
-        </Link>
-        <Link to={`/detalle/${products.id + 1}`}>
-          <Button>Siguiente</Button>
-        </Link>
+        {addedToCart ? 
+         <Link to="/cart"> <button> Ir al carrito </button> </Link> 
+        : <ItemCount onAddToCart={onAddToCart} stock={props.stock}/>}
       </div>
       </Flex>
     );
