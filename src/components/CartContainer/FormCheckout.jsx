@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import Flex from "../Flex/Flex";
 
+
 export default function FormCheckout({ onCheckout }) {
   const [userData, setUserData] = useState({
     username: "",
     email: "",
     phone: "",
   });
+  
 
   function handleInputChange(evt) {
     const inputText = evt.target.value;
@@ -17,7 +19,7 @@ export default function FormCheckout({ onCheckout }) {
     setUserData(newUserData);
   }
 
-  function onSubmit(evt) {
+  async function onSubmit(evt) {
     evt.preventDefault();
     onCheckout(userData);
     if (userData.username.trim() === '' || userData.email.trim() === '' || userData.phone.trim() === '') {

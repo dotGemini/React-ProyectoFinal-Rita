@@ -21,12 +21,13 @@ function CartContainer() {
       };
 
     const orderId = await createOrder(order);
-    clearCart();
+    
     const orderComplete = await swal({
       title: "Gracias por tu compra",
       text: "Tu compra se realizó correctamente. Tu ticket es: " + orderId,
       icon: "success",
     });
+    clearCart();
   }
 
 

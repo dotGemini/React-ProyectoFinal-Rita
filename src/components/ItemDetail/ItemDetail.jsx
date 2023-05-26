@@ -1,8 +1,8 @@
 import Flex from "../Flex/Flex";
 import ItemCount from "../ItemCount/ItemCount";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { cartContext } from "../../context/cartContext";
-import Button from "../Button/Button";
+
 import { Link } from "react-router-dom";
 
 function ItemDetail({products}) {
@@ -13,6 +13,7 @@ function ItemDetail({products}) {
   const [addedToCart, setAddedToCart] = useState(false);
 
   function onAddToCart(count) {
+    setAddedToCart(count);
     addItem(products, count);
     console.log("Agregado");
   }
@@ -24,10 +25,10 @@ function ItemDetail({products}) {
         <h1>{products.title}</h1>
         <h3>{products.category}</h3>
         <p>${products.price}</p>
-        <ItemCount onAddToCart={onAddToCart}/>
+        
         {addedToCart ? 
-         <Link to="/cart"> <button> Ir al carrito </button> </Link> 
-        : <ItemCount onAddToCart={onAddToCart} stock={props.stock}/>}
+          <Link to="/cart"> <button> Ir al carrito </button> </Link> 
+        : <ItemCount onAddToCart={onAddToCart} stock={products.stock}/>}
       </div>
       </Flex>
     );
